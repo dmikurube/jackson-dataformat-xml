@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * <code>java.util.Collection</code>). If defined, a separate container (wrapper) element
  * is used; if not, entries are written without wrapping.
  */
-@Target({ElementType.FIELD, ElementType.METHOD})
+@Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JacksonXmlElementWrapper
 {
@@ -19,11 +19,11 @@ public @interface JacksonXmlElementWrapper
      * Marker value (empty String) that denotes that the underlying property
      * name should also be used as the wrapper name, effectively "doubling"
      * start and end elements.
-     * 
+     *
      * @since 2.1
      */
     public final static String USE_PROPERTY_NAME = "";
-    
+
     String namespace() default USE_PROPERTY_NAME;
     String localName() default USE_PROPERTY_NAME;
 
@@ -31,7 +31,7 @@ public @interface JacksonXmlElementWrapper
      * Optional property that can be used to explicitly disable wrapping,
      * usually via mix-ins, or when using <code>AnnotationIntrospector</code>
      * pairs.
-     * 
+     *
      * @since 2.1
      */
     boolean useWrapping() default true;
